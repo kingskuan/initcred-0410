@@ -1,19 +1,20 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { Providers } from './providers'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'InitCred — 链上信用评分系统',
-  description: 'Built with Claude Vibe Coding',
+  title: 'InitCred — 链上信用评分',
+  description: '基于 Initia 多链数据的实时信用评分系统，为 DeFi 借贷提供风控基础',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark">
-      <body className={inter.className + " bg-[#0a0a0f] text-white antialiased"}>
-        {children}
+    <html lang="zh" className="dark">
+      <body className={inter.className + ' bg-[#0a0a0f] text-white antialiased'}>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )
