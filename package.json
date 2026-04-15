@@ -16,9 +16,7 @@
     "lucide-react": "^0.400.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "tailwind-merge": "^2.3.0",
-    "@initia/react-wallet-widget": "^1.9.8",
-    "@initia/interwovenkit-react": "^2.6.0"
+    "tailwind-merge": "^2.3.0"
   },
   "devDependencies": {
     "typescript": "^5",
