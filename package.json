@@ -17,8 +17,8 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "tailwind-merge": "^2.3.0",
-    "@initia/react-wallet-widget": "^1.3.7",
-    "@initia/interwovenkit-react": "^0.0.1"
+    "@initia/react-wallet-widget": "^1.9.8",
+    "@initia/interwovenkit-react": "^2.6.0"
   },
   "devDependencies": {
     "typescript": "^5",
