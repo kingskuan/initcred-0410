@@ -1,12 +1,6 @@
 'use client'
-
-import { WalletWidgetProvider } from '@initia/react-wallet-widget'
 import { ReactNode } from 'react'
-
+// Wallet loaded via CDN in page.tsx (see Script tag)
 export function Providers({ children }: { children: ReactNode }) {
-  return (
-    <WalletWidgetProvider chainId="interwoven-1">
-      {children}
-    </WalletWidgetProvider>
-  )
+  return <>{children}</>
 }
