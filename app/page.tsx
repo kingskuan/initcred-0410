@@ -113,7 +113,7 @@ export default function Home() {
   const handleView = () => widgetRef.current?.view()
 
   const features = [
-    { icon: '🔗', title: 'Cross-Chain Scoring', desc: 'Aggregates tx history, DeFi activity, and governance across Initia's interwoven rollups', grad: 'from-purple-500 to-cyan-500' },
+    { icon: '🔗', title: 'Cross-Chain Scoring', desc: 'Aggregates tx history, DeFi activity, and governance across Initia interwoven rollups', grad: 'from-purple-500 to-cyan-500' },
     { icon: '📊', title: 'Dynamic Risk Pricing', desc: 'Feeds real-time credit scores into lending protocols for risk-tiered interest rates', grad: 'from-cyan-500 to-emerald-500' },
     { icon: '🎫', title: 'Credit NFT Badge', desc: 'Mint your score as a verifiable on-chain identity credential usable across protocols', grad: 'from-emerald-500 to-purple-500' },
   ]
