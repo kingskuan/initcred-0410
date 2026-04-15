@@ -113,14 +113,14 @@ export default function Home() {
   const handleView = () => widgetRef.current?.view()
 
   const features = [
-    { icon: '🔗', title: '跨链行为评分', desc: '聚合多链交易历史、DeFi参与度、治理投票，生成综合信用评分', grad: 'from-purple-500 to-cyan-500' },
-    { icon: '📊', title: '动态利率风控', desc: '基于实时信用评分为DeFi借贷协议提供动态利率建议，降低坏账风险', grad: 'from-cyan-500 to-emerald-500' },
-    { icon: '🎫', title: '信用 NFT 凭证', desc: '将信用评分铸造为可验证NFT，支持跨协议信用传递和抵押品评估', grad: 'from-emerald-500 to-purple-500' },
+    { icon: '🔗', title: 'Cross-Chain Scoring', desc: 'Aggregates tx history, DeFi activity, and governance across Initia's interwoven rollups', grad: 'from-purple-500 to-cyan-500' },
+    { icon: '📊', title: 'Dynamic Risk Pricing', desc: 'Feeds real-time credit scores into lending protocols for risk-tiered interest rates', grad: 'from-cyan-500 to-emerald-500' },
+    { icon: '🎫', title: 'Credit NFT Badge', desc: 'Mint your score as a verifiable on-chain identity credential usable across protocols', grad: 'from-emerald-500 to-purple-500' },
   ]
 
   const breakdownLabels: Record<string, string> = {
-    balance: '持仓评分', transactions: '交易记录',
-    recentActivity: '近期活跃度', staking: '质押参与', accountAge: '账户资历',
+    balance: 'Balance', transactions: 'Tx History',
+    recentActivity: 'Recent Activity', staking: 'Staking', accountAge: 'Account Age',
   }
 
   return (
@@ -153,9 +153,9 @@ export default function Home() {
               <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">InitCred</span>
             </div>
             <div className="hidden md:flex items-center gap-8 text-gray-400 text-sm">
-              <a href="#score" className="hover:text-white transition-colors">查询评分</a>
-              <a href="#features" className="hover:text-white transition-colors">功能</a>
-              <a href="#how" className="hover:text-white transition-colors">原理</a>
+              <a href="#score" className="hover:text-white transition-colors">Score</a>
+              <a href="#features" className="hover:text-white transition-colors">Features</a>
+              <a href="#how" className="hover:text-white transition-colors">How It Works</a>
             </div>
             {address ? (
               <button onClick={handleView}
@@ -165,7 +165,7 @@ export default function Home() {
             ) : (
               <button onClick={handleConnect} disabled={!widgetReady}
                 className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-500 to-cyan-500 font-medium hover:opacity-90 transition-all hover:scale-105 active:scale-95 disabled:opacity-50">
-                连接钱包
+                Connect Wallet
               </button>
             )}
           </div>
@@ -179,13 +179,13 @@ export default function Home() {
           </div>
           <h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight">
             <span className="bg-gradient-to-r from-white via-purple-200 to-cyan-200 bg-clip-text text-transparent">
-              链上信用评分
+              On-Chain Credit Score
             </span>
           </h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-            基于 Initia 多链真实数据，3秒生成你的
-            <span className="text-purple-400 font-semibold">跨链信用评分</span>，
-            为 DeFi 借贷提供<span className="text-cyan-400 font-semibold">风控基础</span>
+            Built on real Initia mainnet data. Get your
+            <span className="text-purple-400 font-semibold">cross-chain credit score</span>，
+             DeFi <span className="text-cyan-400 font-semibold">Initia DeFi.</span>
           </p>
 
           {/* Score card */}
@@ -195,14 +195,14 @@ export default function Home() {
 
               {!address && !scoreData && !loading && !error && (
                 <div className="space-y-6">
-                  <p className="text-gray-400 text-lg">连接 Initia 钱包获取你的真实信用评分</p>
+                  <p className="text-gray-400 text-lg">Connect your Initia wallet to get your real on-chain credit score</p>
                   <button onClick={handleConnect} disabled={!widgetReady}
                     className="w-full px-8 py-5 rounded-2xl bg-gradient-to-r from-purple-500 to-cyan-500 font-bold text-xl hover:opacity-90 transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-purple-500/25 disabled:opacity-50">
-                    {widgetReady ? '🔗 连接钱包查询信用分' : '⏳ 加载钱包组件...'}
+                    {widgetReady ? '🔗 Connect WalletQuery' : '⏳ Loading wallet...'}
                   </button>
                   <div className="relative">
                     <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-white/10" /></div>
-                    <div className="relative flex justify-center"><span className="bg-black/50 px-4 text-gray-500 text-sm">或手动输入地址</span></div>
+                    <div className="relative flex justify-center"><span className="bg-black/50 px-4 text-gray-500 text-sm">or enter address manually</span></div>
                   </div>
                   <div className="flex gap-3">
                     <input value={manualAddr} onChange={e => setManualAddr(e.target.value)}
@@ -211,7 +211,7 @@ export default function Home() {
                     <button onClick={() => fetchScore(manualAddr)}
                       disabled={!manualAddr.startsWith('init1') || loading}
                       className="px-5 py-3 rounded-xl bg-purple-500/80 font-medium hover:bg-purple-500 disabled:opacity-40 disabled:cursor-not-allowed transition-all">
-                      查询
+                      Query
                     </button>
                   </div>
                 </div>
@@ -220,8 +220,8 @@ export default function Home() {
               {loading && (
                 <div className="flex flex-col items-center gap-4 py-8">
                   <div className="w-16 h-16 rounded-full border-4 border-purple-500/30 border-t-purple-500 animate-spin" />
-                  <p className="text-gray-400">正在读取链上数据...</p>
-                  <p className="text-gray-600 text-xs">连接 Initia Mainnet · rest.initia.xyz</p>
+                  <p className="text-gray-400">Fetching on-chain data...</p>
+                  <p className="text-gray-600 text-xs">Connecting to Initia Mainnet · rest.initia.xyz</p>
                 </div>
               )}
 
@@ -229,7 +229,7 @@ export default function Home() {
                 <div className="space-y-4">
                   <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm">{error}</div>
                   <button onClick={() => { setError(''); setManualAddr(''); setScoreData(null) }}
-                    className="text-gray-400 hover:text-white transition-colors text-sm underline">← 返回</button>
+                    className="text-gray-400 hover:text-white transition-colors text-sm underline">← Back</button>
                 </div>
               )}
 
@@ -262,9 +262,9 @@ export default function Home() {
                   </div>
                   <div className="grid grid-cols-3 gap-3">
                     {[
-                      { v: scoreData.stats.initBalance, l: 'INIT 余额' },
-                      { v: String(scoreData.stats.txCount), l: '总交易数' },
-                      { v: String(scoreData.stats.activeChains), l: '活跃链数' },
+                      { v: scoreData.stats.initBalance, l: 'INIT holdings' },
+                      { v: String(scoreData.stats.txCount), l: 'Total Txs' },
+                      { v: String(scoreData.stats.activeChains), l: 'Active Chains' },
                     ].map(s => (
                       <div key={s.l} className="bg-white/5 rounded-xl p-3 text-center">
                         <p className="text-xl font-bold text-purple-400">{s.v}</p>
@@ -274,7 +274,7 @@ export default function Home() {
                   </div>
                   <button onClick={() => { setScoreData(null); setError(''); setManualAddr('') }}
                     className="w-full py-2.5 rounded-xl bg-white/5 border border-white/10 text-sm text-gray-400 hover:bg-white/10 hover:text-white transition-all">
-                    查询其他地址
+                    Queryanother address
                   </button>
                 </div>
               )}
@@ -285,8 +285,8 @@ export default function Home() {
         {/* Features */}
         <section id="features" className="relative z-10 max-w-7xl mx-auto px-6 py-24">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-black mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">核心功能</h2>
-            <p className="text-gray-400 text-lg">为 DeFi 生态提供可靠的信用基础设施</p>
+            <h2 className="text-4xl font-black mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Features</h2>
+            <p className="text-gray-400 text-lg">Reliable credit infrastructure for the Initia DeFi ecosystem</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {features.map((f, i) => (
@@ -306,16 +306,16 @@ export default function Home() {
         {/* How it works */}
         <section id="how" className="relative z-10 max-w-7xl mx-auto px-6 py-24">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-black mb-4">评分<span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">算法原理</span></h2>
-            <p className="text-gray-400">5 个维度，满分 1000 分</p>
+            <h2 className="text-4xl font-black mb-4"><span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">How It Works</span></h2>
+            <p className="text-gray-400">5 dimensions · 1000 points max</p>
           </div>
           <div className="grid md:grid-cols-5 gap-4">
             {[
-              { icon: '💰', label: '持仓权重', desc: 'INIT 余额', pts: '200 分' },
-              { icon: '📈', label: '交易记录', desc: '历史总交易数', pts: '200 分' },
-              { icon: '⚡', label: '近期活跃', desc: '90天内活跃度', pts: '200 分' },
-              { icon: '🔒', label: '质押参与', desc: 'INIT 质押量', pts: '200 分' },
-              { icon: '⏱️', label: '账户资历', desc: '链上账户年龄', pts: '200 分' },
+              { icon: '💰', label: 'Balance', desc: 'INIT holdings', pts: '200 ' },
+              { icon: '📈', label: 'Tx History', desc: 'Total transactions', pts: '200 ' },
+              { icon: '⚡', label: 'Recent Activity', desc: 'Txs in last 90 days', pts: '200 ' },
+              { icon: '🔒', label: 'Staking', desc: 'Delegated INIT', pts: '200 ' },
+              { icon: '⏱️', label: 'Account Age', desc: 'Months on-chain', pts: '200 ' },
             ].map((item, i) => (
               <div key={i} className="bg-black/40 border border-white/10 rounded-2xl p-6 text-center hover:border-purple-500/30 transition-all">
                 <div className="text-3xl mb-3">{item.icon}</div>
@@ -331,7 +331,7 @@ export default function Home() {
         <section className="relative z-10 max-w-7xl mx-auto px-6 py-16">
           <div className="bg-gradient-to-r from-purple-500/10 to-cyan-500/10 border border-white/10 rounded-3xl p-12">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              {[{ v: '5+', l: '评分维度' }, { v: '<3s', l: '评分时间' }, { v: '链上', l: '数据来源' }, { v: '1000', l: '满分基准' }].map(s => (
+              {[{ v: '5+', l: 'Dimensions' }, { v: '<3s', l: 'Response Time' }, { v: 'On-chain', l: 'Data Source' }, { v: '1000', l: 'Max Score' }].map(s => (
                 <div key={s.l}>
                   <p className="text-4xl md:text-5xl font-black bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent mb-2">{s.v}</p>
                   <p className="text-gray-400">{s.l}</p>
@@ -346,11 +346,11 @@ export default function Home() {
           <div className="relative bg-gradient-to-r from-purple-900/50 to-cyan-900/50 border border-white/10 rounded-3xl p-12 text-center overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-cyan-500/10" />
             <div className="relative">
-              <h2 className="text-4xl font-black mb-6">开始构建你的链上信用</h2>
-              <p className="text-gray-400 text-xl mb-8 max-w-xl mx-auto">连接 Initia 钱包，获取真实链上信用评分</p>
+              <h2 className="text-4xl font-black mb-6">Build Your On-Chain Credit</h2>
+              <p className="text-gray-400 text-xl mb-8 max-w-xl mx-auto"> Initia ，On-Chain Credit Score</p>
               <button onClick={address ? handleView : handleConnect}
                 className="px-10 py-5 rounded-2xl bg-gradient-to-r from-purple-500 to-cyan-500 font-bold text-xl hover:opacity-90 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-purple-500/30">
-                {address ? '查看我的评分 ↑' : '立即连接钱包'}
+                {address ? 'View My Score ↑' : 'Connect Wallet'}
               </button>
             </div>
           </div>
