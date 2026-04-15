@@ -110,13 +110,13 @@ export async function GET(req: NextRequest) {
 
     // --- Grade ---
     let grade = 'D'
-    let label = '信用不足'
-    if (totalScore >= 900) { grade = 'AAA'; label = '卓越信用' }
-    else if (totalScore >= 750) { grade = 'AA'; label = '优秀信用' }
-    else if (totalScore >= 600) { grade = 'A'; label = '良好信用' }
-    else if (totalScore >= 450) { grade = 'BBB'; label = '中等信用' }
-    else if (totalScore >= 300) { grade = 'BB'; label = '一般信用' }
-    else if (totalScore >= 150) { grade = 'B'; label = '较低信用' }
+    let label = 'Insufficient'
+    if (totalScore >= 900) { grade = 'AAA'; label = 'Exceptional' }
+    else if (totalScore >= 750) { grade = 'AA'; label = 'Excellent' }
+    else if (totalScore >= 600) { grade = 'A'; label = 'Good' }
+    else if (totalScore >= 450) { grade = 'BBB'; label = 'Fair' }
+    else if (totalScore >= 300) { grade = 'BB'; label = 'Below Average' }
+    else if (totalScore >= 150) { grade = 'B'; label = 'Low' }
 
     return NextResponse.json({
       address,
@@ -126,10 +126,10 @@ export async function GET(req: NextRequest) {
       label,
       breakdown: {
         balance: { score: balanceScore, max: 200, value: `${initBalance.toFixed(2)} INIT` },
-        transactions: { score: txScore, max: 200, value: `${txCount} 笔` },
-        recentActivity: { score: activityScore, max: 200, value: `近90天 ${recentTxCount} 笔` },
-        staking: { score: stakingScore, max: 200, value: `${totalStaked.toFixed(2)} INIT 质押` },
-        accountAge: { score: ageScore, max: 200, value: `${accountAgeMonths} 个月` },
+        transactions: { score: txScore, max: 200, value: `${txCount} txs` },
+        recentActivity: { score: activityScore, max: 200, value: `last 90d: ${recentTxCount}` },
+        staking: { score: stakingScore, max: 200, value: `${totalStaked.toFixed(2)} INIT staked` },
+        accountAge: { score: ageScore, max: 200, value: `${accountAgeMonths} months` },
       },
       stats: {
         initBalance: initBalance.toFixed(2),
