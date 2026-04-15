@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
 
 export default function Home() {
   const [mounted, setMounted] = useState(false)
@@ -82,7 +81,7 @@ export default function Home() {
             <a href="#how-it-works" className="text-gray-400 hover:text-white transition-colors">原理</a>
             <a href="#stats" className="text-gray-400 hover:text-white transition-colors">数据</a>
           </div>
-          <button className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-500 to-cyan-500 font-medium hover:opacity-90 transition-all hover:scale-105 active:scale-95">
+          <button aria-label="连接钱包" className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-500 to-cyan-500 font-medium hover:opacity-90 transition-all hover:scale-105 active:scale-95">
             连接钱包
           </button>
         </div>
@@ -108,12 +107,12 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            <button className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-purple-500 to-cyan-500 font-semibold text-lg hover:opacity-90 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-purple-500/25">
+            <button aria-label="查询我的信用分" className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-purple-500 to-cyan-500 font-semibold text-lg hover:opacity-90 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-purple-500/25">
               查询我的信用分
             </button>
-            <button className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white/5 border border-white/20 font-semibold text-lg hover:bg-white/10 transition-all backdrop-blur-sm">
+            <a href="#features" aria-label="了解更多" className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white/5 border border-white/20 font-semibold text-lg hover:bg-white/10 transition-all backdrop-blur-sm inline-block text-center">
               了解更多
-            </button>
+            </a>
           </div>
 
           <div className="relative max-w-4xl mx-auto">
@@ -222,7 +221,7 @@ export default function Home() {
             <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
               连接钱包，立即获取你的跨链信用评分，解锁更优质的DeFi服务
             </p>
-            <button className="px-10 py-5 rounded-2xl bg-gradient-to-r from-purple-500 to-cyan-500 font-semibold text-xl hover:opacity-90 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-purple-500/30">
+            <button aria-label="立即开始" className="px-10 py-5 rounded-2xl bg-gradient-to-r from-purple-500 to-cyan-500 font-semibold text-xl hover:opacity-90 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-purple-500/30">
               立即开始
             </button>
           </div>
@@ -241,12 +240,10 @@ export default function Home() {
               </span>
             </div>
             <p className="text-gray-500 text-sm">
-              © 2024 InitCred. Built for INITIATE Hackathon on DoraHacks.
+              © {new Date().getFullYear()} InitCred. Built for INITIATE Hackathon on DoraHacks.
             </p>
             <div className="flex items-center gap-4">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">Twitter</a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">Discord</a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">GitHub</a>
+              <a href="https://github.com/kingskuan/initcred-0410" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">GitHub</a>
             </div>
           </div>
         </div>
