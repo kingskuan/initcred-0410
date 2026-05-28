@@ -38,6 +38,7 @@ export async function GET(req: NextRequest) {
       tokenCount = coins.length
       const uinit = coins.find(c => c.denom === 'uinit')
       initBalance = uinit ? parseFloat(uinit.amount) / 1_000_000 : 0
+      if (isNaN(initBalance)) initBalance = 0
     }
 
     // --- Transaction history ---
@@ -49,6 +50,7 @@ export async function GET(req: NextRequest) {
     if (sentTxData.status === 'fulfilled') {
       const txs: any[] = sentTxData.value?.tx_responses || []
       txCount = parseInt(sentTxData.value?.pagination?.total || '0', 10) || txs.length
+      if (isNaN(txCount)) txCount = txs.length
 
       const now = Date.now()
       const ninetyDaysAgo = now - 90 * 24 * 60 * 60 * 1000
@@ -86,7 +88,8 @@ export async function GET(req: NextRequest) {
       const delegations: any[] = delegationData.value?.delegation_responses || []
       validatorCount = delegations.length
       for (const d of delegations) {
-        totalStaked += parseFloat(d?.balance?.amount || '0') / 1_000_000
+        const parsed = parseFloat(d?.balance?.amount || '0') / 1_000_000
+        totalStaked += isNaN(parsed) ? 0 : parsed
       }
     }
 
