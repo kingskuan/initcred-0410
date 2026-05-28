@@ -198,7 +198,7 @@ export default function Home() {
                   <p className="text-gray-400 text-lg">Connect your Initia wallet to get your real on-chain credit score</p>
                   <button onClick={handleConnect} disabled={!widgetReady}
                     className="w-full px-8 py-5 rounded-2xl bg-gradient-to-r from-purple-500 to-cyan-500 font-bold text-xl hover:opacity-90 transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-purple-500/25 disabled:opacity-50">
-                    {widgetReady ? '🔗 Connect WalletQuery' : '⏳ Loading wallet...'}
+                    {widgetReady ? '🔗 Connect Wallet' : '⏳ Loading wallet...'}
                   </button>
                   <div className="relative">
                     <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-white/10" /></div>
@@ -274,7 +274,7 @@ export default function Home() {
                   </div>
                   <button onClick={() => { setScoreData(null); setError(''); setManualAddr('') }}
                     className="w-full py-2.5 rounded-xl bg-white/5 border border-white/10 text-sm text-gray-400 hover:bg-white/10 hover:text-white transition-all">
-                    Queryanother address
+                    Query another address
                   </button>
                 </div>
               )}
